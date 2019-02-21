@@ -49,6 +49,7 @@ configure(subprojects.findAll { it.name.startsWith('org.xtext') }) {
 		exclude group: 'asm'
 	}
 
+	tasks.assemble.dependsOn(createSourceSetDirs)
 }
 
 task npmInstallVsce(type: NpmTask, dependsOn: npmSetup) {

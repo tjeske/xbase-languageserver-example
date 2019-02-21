@@ -24,6 +24,15 @@ if (name.endsWith(".tests")) {
 	}
 }
 
+task createSourceSetDirs {
+    doLast {
+        sourceSets.all { set ->
+            set.allSource.srcDirs.each { it.mkdirs() }
+            set.output.getDirs().each { it.mkdirs() }
+        }
+    }
+}
+
 sourceSets.all {
 	resources.exclude '**/*.g', '**/*.xtext', '**/*.mwe2', '**/*.xtend', '**/*._trace'
 }
